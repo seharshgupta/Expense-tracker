@@ -85,16 +85,16 @@ function Transactions() {
                 <div className="stats-cards">
                     <div className="stat-card income">
                         <h3>Total Income</h3>
-                        <p>Rs. {totalIncome.toLocaleString()}</p>
+                        <p>₹ {totalIncome.toLocaleString()}</p>
                     </div>
                     <div className="stat-card expense">
                         <h3>Total Expenses</h3>
-                        <p>Rs. {totalExpenses.toLocaleString()}</p>
+                        <p>₹ {totalExpenses.toLocaleString()}</p>
                     </div>
                     <div className="stat-card balance">
                         <h3>Net Balance</h3>
                         <p className={netBalance >= 0 ? 'positive' : 'negative'}>
-                            Rs. {netBalance.toLocaleString()}
+                            ₹ {netBalance.toLocaleString()}
                         </p>
                     </div>
                 </div>
@@ -141,8 +141,8 @@ function Transactions() {
                             <div key={month} className="month-group">
                                 <h3 className="month-header">{month}</h3>
                                 <div className="month-total">
-                                    <span>Income: Rs. {transactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0).toLocaleString()}</span>
-                                    <span>Expenses: Rs. {transactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0).toLocaleString()}</span>
+                                                            <span>Income: ₹ {transactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0).toLocaleString()}</span>
+                        <span>Expenses: ₹ {transactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0).toLocaleString()}</span>
                                 </div>
                                 {transactions.map((transaction) => (
                                     <div key={transaction._id} className="transaction-item">
@@ -154,7 +154,7 @@ function Transactions() {
                                             </div>
                                             <div className="transaction-amount">
                                                 <span className={`amount ${transaction.type}`}>
-                                                    {transaction.type === 'expense' ? '-' : '+'}Rs. {transaction.amount.toLocaleString()}
+                                                    {transaction.type === 'expense' ? '-' : '+'}₹ {transaction.amount.toLocaleString()}
                                                 </span>
                                             </div>
                                         </div>

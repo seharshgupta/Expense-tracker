@@ -73,7 +73,7 @@ function IncomeItem({
                 <h5>{title}</h5>
                 <div className="inner-content">
                     <div className="text">
-                        <p>Rs. {amount}</p>
+                        <p>₹ {amount}</p>
                         <p>{calender} {dateFormat(date)}</p>
                         <p>
                             {comment}

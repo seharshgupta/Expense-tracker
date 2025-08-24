@@ -15,7 +15,14 @@ export const GlobalStyle = createGlobalStyle`
         --color-green: #42AD00;
         --color-grey: #aaa;
         --color-accent: #F56692;
+        --color-accent-hover: #e55a84;
         --color-delete: #FF0000;
+        --color-red: #ff6b6b;
+        --bg-color: #fcf6f9;
+        --bg-secondary: #ffffff;
+        --text-color: #222260;
+        --text-muted: #aaa;
+        --border-color: #e0e0e0;
     }
 
     body{

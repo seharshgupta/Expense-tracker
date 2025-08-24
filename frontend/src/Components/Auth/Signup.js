@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
-import { user, lock, mail } from '../../utils/Icons';
+import { user, lock, mail, profile } from '../../utils/Icons';
 
 function Signup() {
     const { signup, error, setError } = useGlobalContext();
     const [formData, setFormData] = useState({
+        username: '',
         name: '',
         email: '',
         password: '',
@@ -20,7 +21,7 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+        if (!formData.username || !formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
             setError('Please fill in all fields');
             return;
         }
@@ -30,6 +31,10 @@ function Signup() {
         }
         if (formData.password.length < 6) {
             setError('Password must be at least 6 characters long');
+            return;
+        }
+        if (formData.username.length < 3) {
+            setError('Username must be at least 3 characters long');
             return;
         }
         signup(formData);
@@ -45,6 +50,20 @@ function Signup() {
                 
                 <form onSubmit={handleSubmit} className="auth-form">
                     {error && <p className='error'>{error}</p>}
+                    
+                    <div className="input-control">
+                        <div className="input-icon">
+                            {profile}
+                        </div>
+                        <input 
+                            type="text" 
+                            name="username"
+                            value={formData.username}
+                            placeholder="Username"
+                            onChange={handleInput}
+                            required
+                        />
+                    </div>
                     
                     <div className="input-control">
                         <div className="input-icon">

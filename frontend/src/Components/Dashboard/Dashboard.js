@@ -82,7 +82,7 @@ function Dashboard() {
                         <div className="stat-icon">💰</div>
                         <div className="stat-content">
                             <h3>Total Income</h3>
-                            <p className="amount">Rs. {totalIncome().toLocaleString()}</p>
+                            <p className="amount">₹ {totalIncome().toLocaleString()}</p>
                             <span className="period">All Time</span>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ function Dashboard() {
                         <div className="stat-icon">💸</div>
                         <div className="stat-content">
                             <h3>Total Expenses</h3>
-                            <p className="amount">Rs. {totalExpenses().toLocaleString()}</p>
+                            <p className="amount">₹ {totalExpenses().toLocaleString()}</p>
                             <span className="period">All Time</span>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ function Dashboard() {
                         <div className="stat-content">
                             <h3>Net Balance</h3>
                             <p className={`amount ${totalBalance() >= 0 ? 'positive' : 'negative'}`}>
-                                Rs. {totalBalance().toLocaleString()}
+                                ₹ {totalBalance().toLocaleString()}
                             </p>
                             <span className="period">All Time</span>
                         </div>
@@ -112,16 +112,16 @@ function Dashboard() {
                     <div className="monthly-stats">
                         <div className="monthly-card">
                             <h4>Monthly Income</h4>
-                            <p>Rs. {monthlyStats.income?.toLocaleString() || '0'}</p>
+                            <p>₹ {monthlyStats.income?.toLocaleString() || '0'}</p>
                         </div>
                         <div className="monthly-card">
                             <h4>Monthly Expenses</h4>
-                            <p>Rs. {monthlyStats.expenses?.toLocaleString() || '0'}</p>
+                            <p>₹ {monthlyStats.expenses?.toLocaleString() || '0'}</p>
                         </div>
                         <div className="monthly-card">
                             <h4>Monthly Balance</h4>
                             <p className={monthlyStats.balance >= 0 ? 'positive' : 'negative'}>
-                                Rs. {monthlyStats.balance?.toLocaleString() || '0'}
+                                ₹ {monthlyStats.balance?.toLocaleString() || '0'}
                             </p>
                         </div>
                     </div>
@@ -141,16 +141,16 @@ function Dashboard() {
                                 <div className="insight-card">
                                     <h4>Top Spending Category</h4>
                                     <p className="insight-value">{insights.topCategory}</p>
-                                    <span className="insight-detail">Rs. {insights.topCategoryAmount.toLocaleString()}</span>
+                                    <span className="insight-detail">₹ {insights.topCategoryAmount.toLocaleString()}</span>
                                 </div>
                                 <div className="insight-card">
                                     <h4>Average Expense</h4>
-                                    <p className="insight-value">Rs. {insights.avgExpense.toFixed(0)}</p>
+                                    <p className="insight-value">₹ {insights.avgExpense.toFixed(0)}</p>
                                     <span className="insight-detail">Per transaction</span>
                                 </div>
                                 <div className="insight-card">
                                     <h4>Highest Expense</h4>
-                                    <p className="insight-value">Rs. {insights.highestExpense.toLocaleString()}</p>
+                                    <p className="insight-value">₹ {insights.highestExpense.toLocaleString()}</p>
                                     <span className="insight-detail">Single transaction</span>
                                 </div>
                                 <div className="insight-card">
@@ -180,7 +180,7 @@ function Dashboard() {
                                     </div>
                                     <div className="transaction-amount">
                                         <span className={`amount ${transaction.type}`}>
-                                            {transaction.type === 'expense' ? '-' : '+'}Rs. {transaction.amount.toLocaleString()}
+                                            {transaction.type === 'expense' ? '-' : '+'}₹ {transaction.amount.toLocaleString()}
                                         </span>
                                     </div>
                                 </div>

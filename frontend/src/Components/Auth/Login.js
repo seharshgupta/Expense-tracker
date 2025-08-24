@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
-import { user, lock } from '../../utils/Icons';
+import { user, lock, eye, eyeSlash } from '../../utils/Icons';
 
 function Login() {
     const { login, error, setError } = useGlobalContext();
     const [formData, setFormData] = useState({
-        email: '',
+        emailOrUsername: '',
         password: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleInput = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,7 +19,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!formData.email || !formData.password) {
+        if (!formData.emailOrUsername || !formData.password) {
             setError('Please fill in all fields');
             return;
         }
@@ -41,10 +42,10 @@ function Login() {
                             {user}
                         </div>
                         <input 
-                            type="email" 
-                            name="email"
-                            value={formData.email}
-                            placeholder="Email Address"
+                            type="text" 
+                            name="emailOrUsername"
+                            value={formData.emailOrUsername}
+                            placeholder="Email or Username"
                             onChange={handleInput}
                             required
                         />
@@ -55,13 +56,19 @@ function Login() {
                             {lock}
                         </div>
                         <input 
-                            type="password" 
+                            type={showPassword ? "text" : "password"}
                             name="password"
                             value={formData.password}
                             placeholder="Password"
                             onChange={handleInput}
                             required
                         />
+                        <div 
+                            className="password-toggle"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? eyeSlash : eye}
+                        </div>
                     </div>
                     
                     <div className="submit-btn">
@@ -131,40 +138,55 @@ const LoginStyled = styled.div`
             border-radius: 5px;
         }
 
-        .input-control {
-            position: relative;
-            
-            .input-icon {
-                position: absolute;
-                left: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-                color: rgba(34, 34, 96, 0.4);
-                z-index: 1;
-            }
-
-            input {
-                width: 100%;
-                padding: 1rem 1rem 1rem 3rem;
-                border: 2px solid #fff;
-                border-radius: 10px;
-                background: transparent;
-                font-size: 1rem;
-                color: rgba(34, 34, 96, 0.9);
-                box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-                transition: all 0.3s ease;
-
-                &:focus {
-                    outline: none;
-                    border-color: var(--color-accent);
-                    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
-                }
-
-                &::placeholder {
+                    .input-control {
+                position: relative;
+                
+                .input-icon {
+                    position: absolute;
+                    left: 1rem;
+                    top: 50%;
+                    transform: translateY(-50%);
                     color: rgba(34, 34, 96, 0.4);
+                    z-index: 1;
+                }
+
+                .password-toggle {
+                    position: absolute;
+                    right: 1rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: rgba(34, 34, 96, 0.4);
+                    cursor: pointer;
+                    z-index: 1;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: var(--color-accent);
+                    }
+                }
+
+                input {
+                    width: 100%;
+                    padding: 1rem 1rem 1rem 3rem;
+                    border: 2px solid #fff;
+                    border-radius: 10px;
+                    background: transparent;
+                    font-size: 1rem;
+                    color: rgba(34, 34, 96, 0.9);
+                    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                    transition: all 0.3s ease;
+
+                    &:focus {
+                        outline: none;
+                        border-color: var(--color-accent);
+                        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+                    }
+
+                    &::placeholder {
+                        color: rgba(34, 34, 96, 0.4);
+                    }
                 }
             }
-        }
 
         .submit-btn {
             margin-top: 1rem;

@@ -169,6 +169,64 @@ export const GlobalProvider = ({ children }) => {
         }
     };
 
+    // Profile management functions
+    const getProfile = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const { data } = await axios.get(`${BASE_URL}profile`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setUser(data.user);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            setError('');
+        } catch (err) {
+            handleError(err);
+        }
+    };
+
+    const updateProfile = async (profileData) => {
+        try {
+            const token = localStorage.getItem('token');
+            const { data } = await axios.put(`${BASE_URL}profile`, profileData, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setUser(data.user);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            setError('');
+        } catch (err) {
+            handleError(err);
+            throw err;
+        }
+    };
+
+    const updatePassword = async (passwordData) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.put(`${BASE_URL}password`, passwordData, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setError('');
+        } catch (err) {
+            handleError(err);
+            throw err;
+        }
+    };
+
+    const updateProfilePicture = async (pictureData) => {
+        try {
+            const token = localStorage.getItem('token');
+            const { data } = await axios.put(`${BASE_URL}profile-picture`, pictureData, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setUser(data.user);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            setError('');
+        } catch (err) {
+            handleError(err);
+            throw err;
+        }
+    };
+
     return (
         <GlobalContext.Provider
             value={{
@@ -192,6 +250,10 @@ export const GlobalProvider = ({ children }) => {
                 signup,
                 logout,
                 checkAuth,
+                getProfile,
+                updateProfile,
+                updatePassword,
+                updateProfilePicture,
             }}
         >
             {children}

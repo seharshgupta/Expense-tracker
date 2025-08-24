@@ -8,6 +8,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Transactions from './Components/Transactions/Transactions';
 import Income from './Components/Income/Income';
 import Expenses from './Components/Expenses/Expenses';
+import Profile from './Components/Profile/Profile';
 import Login from './Components/Auth/Login';
 import Signup from './Components/Auth/Signup';
 import { useGlobalContext } from './context/globalContext';
@@ -45,6 +46,7 @@ function App() {
     if (active === 2) return <Transactions />;
     if (active === 3) return <Income />;
     if (active === 4) return <Expenses />;
+    if (active === 5) return <Profile />;
     return <Dashboard />;
   };
 

@@ -30,3 +30,6 @@ export const circle = <i className="fa-solid fa-circle-dot"></i>
 export const user = <i className="fa-solid fa-user"></i>
 export const lock = <i className="fa-solid fa-lock"></i>
 export const mail = <i className="fa-solid fa-envelope"></i>
+export const profile = <i className="fa-solid fa-user-circle"></i>
+export const eye = <i className="fa-solid fa-eye"></i>
+export const eyeSlash = <i className="fa-solid fa-eye-slash"></i>

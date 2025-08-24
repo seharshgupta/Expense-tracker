@@ -13,13 +13,24 @@ function Navigation({ active, setActive }) {
         window.location.href = '/login';
     };
 
+    const getInitials = (name) => {
+        if (!name) return 'U';
+        return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+    };
+
     return (
         <NavStyled>
             <div className="user-con">
-                <img src={avatar} alt="User Avatar" aria-label="User Avatar" />
+                {user?.profilePicture ? (
+                    <img src={user.profilePicture} alt="User Avatar" aria-label="User Avatar" />
+                ) : (
+                    <div className="user-initials">
+                        {getInitials(user?.name)}
+                    </div>
+                )}
                 <div className="text">
                     <h2>{user?.name || 'User'}</h2>
-                    <p>Your Money</p>
+                    <p>@{user?.username || 'user'}</p>
                 </div>
             </div>
 
@@ -76,6 +87,21 @@ const NavStyled = styled.nav`
             background: #fcf6f9;
             border: 2px solid #FFFFFF;
             padding: 0.2rem;
+            box-shadow: 0px 1px 17px rgba(0, 0, 0, 0.06);
+        }
+
+        .user-initials {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            border: 2px solid #FFFFFF;
             box-shadow: 0px 1px 17px rgba(0, 0, 0, 0.06);
         }
 

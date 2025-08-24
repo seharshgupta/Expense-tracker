@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        maxLength: 30,
+        minLength: 3
+    },
     name: {
         type: String,
         required: true,
@@ -19,6 +27,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 6
+    },
+    profilePicture: {
+        type: String,
+        default: null
     }
 }, { timestamps: true });
 
