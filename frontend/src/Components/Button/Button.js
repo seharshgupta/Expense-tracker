@@ -9,7 +9,7 @@ function Button({name, icon, onClick, bg, bPad, color, bRad, disabled}) {
                 padding: bPad,
                 borderRadius: bRad,
                 color: color,
-            }} 
+            }}
             onClick={onClick}
             disabled={disabled}
         >
