@@ -1,7 +1,7 @@
 import React, { useContext, useState, useCallback } from "react";
 import axios from "axios";
 
-const BASE_URL = "https://expense-tracker-backend-b1se.onrender.com";
+const BASE_URL = "https://expense-tracker-backend-b1se.onrender.com/api/v1/";
 
 const GlobalContext = React.createContext();
 
